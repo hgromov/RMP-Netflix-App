@@ -1,0 +1,80 @@
+.filterSort-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 50px;
+  padding: 15px 0;
+}
+
+.filter {
+  position: relative;
+
+  input {
+    display: none;
+  }
+
+  label {
+    margin-right: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+  }
+
+  input:checked + label:after {
+    content: '';
+    position: absolute;
+    top: 33.5px;
+    height: 2px;
+    background: rgb(246, 82, 97);
+  }
+
+  label[for='all']:after {
+    width: 27px;
+    left: 0;
+  }
+  label[for='documentary']:after {
+    width: 108px;
+    left: 45px;
+  }
+  label[for='comedy']:after {
+    width: 62px;
+    left: 174px;
+  }
+  label[for='horror']:after {
+    width: 64px;
+    left: 255px;
+  }
+  label[for='crime']:after {
+    width: 46px;
+    left: 338px;
+  }
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  &__heading {
+    margin: 0;
+    margin-top: 1px;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+  }
+  select {
+    background: transparent;
+    color: white;
+    border: 0;
+  }
+}
+
+.check-bar {
+  background: #555;
+  height: 2.5px;
+  border: 0;
+  border-bottom: 1px solid #000;
+  margin: 0 50px 15px;
+}

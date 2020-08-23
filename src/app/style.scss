@@ -1,0 +1,23 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #555555;
+}
+
+.logo {
+  background-image: url('./assets/logo-netflix.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 30px;
+}
+
+.layout--blur {
+  filter: blur(2px) brightness(20%);
+}

@@ -1,7 +1,9 @@
 import React from 'react';
+import Layout from './pages/layout';
+import './style.scss';
 
 const App = () => (
-  <div>instance started with {process.env.NODE_ENV} webpack config</div>
+  <Layout />
 );
 
 export default App;

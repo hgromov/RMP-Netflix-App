@@ -14,6 +14,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.scss$/i,
+        use: [
+          'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: `postcss-loader`,
+            options: {
+              options: {},
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
@@ -25,35 +40,17 @@ module.exports = {
         loader: 'json-loader',
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-        ],
-      },
-      {
-        test: /\.(eot|ttf|woff|woff2?)$/,
+        test: /\.(eot|ttf|woff|woff2|png|svg|jpg|jpeg|gif|tiff|webp|ico?)$/,
         exclude: /node_modules/,
         use: {
           loader: 'file-loader',
           options: {
             name: 'assets/[hash:8].[ext]',
+            context: path.resolve(__dirname, "src/"),
+            outputPath: 'dist/',
+            useRelativePaths: true
           },
         },
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif|tiff|webp|ico)$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: 'assets/[hash:8].[ext]',
-            },
-          },
-        ],
       },
     ],
   },
