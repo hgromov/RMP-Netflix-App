@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Header from '../containers/header/header';
-import Content from '../containers/content/content';
-import Footer from '../components/footer/footer';
-import ErrorBoundary from '../components/error-boundary/error-boundary';
-import PopupEdit from '../components/popups/popup-edit/popup-edit';
-import PopupAdd from '../components/popups/popup-add/popup-add';
-import PopupDelete from '../components/popups/popup-delete/popup-delete';
+import Header from '../containers/HeaderContainer/HeaderContainer';
+import ContentContainer from '../containers/ContentContainer/ContentContainer';
+import Footer from '../components/Footer/Footer';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import PopupEdit from '../components/popups/PopupEdit/PopupEdit';
+import PopupAdd from '../components/popups/PopupAdd/PopupAdd';
+import PopupDelete from '../components/popups/PopupDelete/PopupDelete';
 
 const Layout = () => {
   const [isShownAddPopup, setIsShownAddPopup] = useState(false);
@@ -20,7 +20,7 @@ const Layout = () => {
       <div
         className={
           isShownAddPopup || isShownEditPopup || isShownDeletePopup
-            ? 'layout--blur'
+            ? 'Layout--blur'
             : ''
         }
       >
@@ -36,7 +36,7 @@ const Layout = () => {
               setIsShownAddPopup(true);
             }}
           />
-          <Content
+          <ContentContainer
             showEditPopup={(props) => {
               setEditPopup(
                 <PopupEdit

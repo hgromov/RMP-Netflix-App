@@ -1,51 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './filter-sort.scss';
+import './FilterSort.scss';
 
 const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
   <>
-    <div className="filterSort-wrapper">
+    <div className="FilterSort-wrapper">
       <div className="filter">
         <input
+          className="filter__input"
           id="all"
           type="radio"
           name="category"
           value="all"
           onClick={handleSubmitCategory}
         />
-        <label htmlFor="all">ALL</label>
+        <label className="filter__label" htmlFor="all">
+          ALL
+        </label>
         <input
+          className="filter__input"
           id="documentary"
           type="radio"
           name="category"
           value="documentary"
           onClick={handleSubmitCategory}
         />
-        <label htmlFor="documentary">DOCUMENTARY</label>
+        <label className="filter__label" htmlFor="documentary">
+          DOCUMENTARY
+        </label>
         <input
+          className="filter__input"
           id="comedy"
           type="radio"
           name="category"
           value="comedy"
           onClick={handleSubmitCategory}
         />
-        <label htmlFor="comedy">COMEDY</label>
+        <label className="filter__label" htmlFor="comedy">
+          COMEDY
+        </label>
         <input
+          className="filter__input"
           id="horror"
           type="radio"
           name="category"
           value="horror"
           onClick={handleSubmitCategory}
         />
-        <label htmlFor="horror">HORROR</label>
+        <label className="filter__label" htmlFor="horror">
+          HORROR
+        </label>
         <input
+          className="filter__input"
           id="crime"
           type="radio"
           name="category"
           value="crime"
           onClick={handleSubmitCategory}
         />
-        <label htmlFor="crime">CRIME</label>
+        <label className="filter__label" htmlFor="crime">
+          CRIME
+        </label>
       </div>
       <div className="sort">
         <h2 className="sort__heading">SORT BY</h2>

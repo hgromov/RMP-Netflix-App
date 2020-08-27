@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './popup-add.scss';
+import './PopupAdd.scss';
 
 const PopupAdd = ({ close }) => {
   const [title, setTitle] = useState('');
@@ -11,71 +11,71 @@ const PopupAdd = ({ close }) => {
   const [runtime, setRuntime] = useState('');
 
   return (
-    <div className="popupAdd-wrapper">
-      <div className="popupAdd">
-        <button className="popupAdd__close-btn" onClick={() => close()} />
-        <h2 className="popupAdd__heading">ADD MOVIE</h2>
+    <div className="PopupAdd-wrapper">
+      <div className="PopupAdd">
+        <button className="PopupAdd__close-btn" onClick={() => close()} />
+        <h2 className="PopupAdd__heading">ADD MOVIE</h2>
 
-        <div className="popupAdd__form">
-          <label className="popupAdd__label">
+        <div className="PopupAdd__form">
+          <label className="PopupAdd__label">
             TITLE
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </label>
-          <label className="popupAdd__label">
+          <label className="PopupAdd__label">
             RELEASE DATE
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
           </label>
-          <label className="popupAdd__label">
+          <label className="PopupAdd__label">
             MOVIE URL
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </label>
-          <label className="popupAdd__label">
+          <label className="PopupAdd__label">
             GENRE
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={genres}
               onChange={(e) => setGenres(e.target.value)}
             />
           </label>
-          <label className="popupAdd__label">
+          <label className="PopupAdd__label">
             OVERVIEW
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={overview}
               onChange={(e) => setOverview(e.target.value)}
             />
           </label>
-          <label className="popupAdd__label">
+          <label className="PopupAdd__label">
             RUNTIME
             <input
-              className="popupAdd__input"
+              className="PopupAdd__input"
               type="text"
               value={runtime}
               onChange={(e) => setRuntime(e.target.value)}
             />
           </label>
-          <div className="popupAdd__buttons">
-            <button className="popupAdd__reset-btn" onClick={() => {}}>
+          <div className="PopupAdd__buttons">
+            <button className="PopupAdd__reset-btn" onClick={() => {}}>
               RESET
             </button>
-            <button className="popupAdd__save-btn" onClick={() => {}}>
+            <button className="PopupAdd__save-btn" onClick={() => {}}>
               SAVE
             </button>
           </div>

@@ -1,10 +1,10 @@
-.header {
+.Header {
   height: 50vh;
   padding: 10px;
   position: relative;
 }
 
-.header::before {
+.Header::before {
   content: '';
   position: absolute;
   top: 0;

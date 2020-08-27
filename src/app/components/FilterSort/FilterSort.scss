@@ -1,4 +1,4 @@
-.filterSort-wrapper {
+.FilterSort-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -9,19 +9,21 @@
 .filter {
   position: relative;
 
-  input {
+  &__input {
     display: none;
   }
 
-  label {
+  &__label {
     margin-right: 20px;
     font-size: 14px;
     font-weight: normal;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    cursor: pointer;
   }
 
-  input:checked + label:after {
+  &__input:checked + &__label:after,
+  &__label:hover:after {
     content: '';
     position: absolute;
     top: 33.5px;
@@ -29,23 +31,23 @@
     background: rgb(246, 82, 97);
   }
 
-  label[for='all']:after {
+  &__label[for='all']:after {
     width: 27px;
     left: 0;
   }
-  label[for='documentary']:after {
+  &__label[for='documentary']:after {
     width: 108px;
     left: 45px;
   }
-  label[for='comedy']:after {
+  &__label[for='comedy']:after {
     width: 62px;
     left: 174px;
   }
-  label[for='horror']:after {
+  &__label[for='horror']:after {
     width: 64px;
     left: 255px;
   }
-  label[for='crime']:after {
+  &__label[for='crime']:after {
     width: 46px;
     left: 338px;
   }
@@ -64,7 +66,7 @@
     color: #555;
     white-space: nowrap;
   }
-  select {
+  &__select {
     background: transparent;
     color: white;
     border: 0;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './popup-edit.scss';
+import './PopupEdit.scss';
 
 const PopupEdit = ({ name, ganres, year, id, close }) => {
   const [title, setTitle] = useState(name);
@@ -11,72 +11,72 @@ const PopupEdit = ({ name, ganres, year, id, close }) => {
   const [runtime, setRuntime] = useState('');
 
   return (
-    <div className="popupEdit-wrapper">
-      <div className="popupEdit">
-        <button className="popupEdit__close-btn" onClick={() => close()} />
-        <h2 className="popupEdit__heading">EDIT MOVIE</h2>
-        <span className="popupEdit__label">MOVIE ID</span>
-        <span className="popupEdit__id">{id}</span>
-        <div className="popupEdit__form">
-          <label className="popupEdit__label">
+    <div className="PopupEdit-wrapper">
+      <div className="PopupEdit">
+        <button className="PopupEdit__close-btn" onClick={() => close()} />
+        <h2 className="PopupEdit__heading">EDIT MOVIE</h2>
+        <span className="PopupEdit__label">MOVIE ID</span>
+        <span className="PopupEdit__id">{id}</span>
+        <div className="PopupEdit__form">
+          <label className="PopupEdit__label">
             TITLE
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </label>
-          <label className="popupEdit__label">
+          <label className="PopupEdit__label">
             RELEASE DATE
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
           </label>
-          <label className="popupEdit__label">
+          <label className="PopupEdit__label">
             MOVIE URL
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </label>
-          <label className="popupEdit__label">
+          <label className="PopupEdit__label">
             GENRE
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={genres}
               onChange={(e) => setGenres(e.target.value)}
             />
           </label>
-          <label className="popupEdit__label">
+          <label className="PopupEdit__label">
             OVERVIEW
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={overview}
               onChange={(e) => setOverview(e.target.value)}
             />
           </label>
-          <label className="popupEdit__label">
+          <label className="PopupEdit__label">
             RUNTIME
             <input
-              className="popupEdit__input"
+              className="PopupEdit__input"
               type="text"
               value={runtime}
               onChange={(e) => setRuntime(e.target.value)}
             />
           </label>
-          <div className="popupEdit__buttons">
-            <button className="popupEdit__reset-btn" onClick={() => {}}>
+          <div className="PopupEdit__buttons">
+            <button className="PopupEdit__reset-btn" onClick={() => {}}>
               RESET
             </button>
-            <button className="popupEdit__save-btn" onClick={() => {}}>
+            <button className="PopupEdit__save-btn" onClick={() => {}}>
               SAVE
             </button>
           </div>
@@ -88,6 +88,7 @@ const PopupEdit = ({ name, ganres, year, id, close }) => {
 
 PopupEdit.propTypes = {
   id: PropTypes.number,
+  name: PropTypes.string,
   ganres: PropTypes.string,
   year: PropTypes.string,
   close: PropTypes.func,

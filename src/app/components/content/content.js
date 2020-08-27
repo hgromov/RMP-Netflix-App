@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FilterSort from '../filter-sort/filter-sort';
-import MoviesList from '../movies-list/movies-list';
-import './content.scss';
+import FilterSort from '../FilterSort/FilterSort';
+import MoviesList from '../MoviesList/MoviesList';
+import './Content.scss';
 
 const Content = ({
   handleSubmitCategory,
@@ -11,7 +11,7 @@ const Content = ({
   showEditPopup,
   showDeletePopup,
 }) => (
-  <div className="content">
+  <div className="Content">
     <FilterSort
       handleSubmitCategory={handleSubmitCategory}
       handleSubmitSort={handleSubmitSort}
@@ -25,8 +25,11 @@ const Content = ({
 );
 
 Content.propTypes = {
-  handleFilterSort: PropTypes.func,
+  handleSubmitCategory: PropTypes.func,
+  handleSubmitSort: PropTypes.func,
   movies: PropTypes.array,
+  showEditPopup: PropTypes.func,
+  showDeletePopup: PropTypes.func,
 };
 
 export default Content;

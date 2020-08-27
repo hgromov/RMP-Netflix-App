@@ -1,7 +1,7 @@
 import React from 'react';
-import MovieCard from '../movie-card/movie-card';
+import MovieCard from '../MovieCard/MovieCard';
 import PropTypes from 'prop-types';
-import './movies-list.scss';
+import './MoviesList.scss';
 
 const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
   <>
@@ -9,9 +9,14 @@ const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
       <span className="movies-counter__amount">{movies.length}</span> movies
       found
     </div>
-    <div className="moviesList-wrapper">
+    <div className="MoviesList-wrapper">
       {movies.map((movie) => (
-        <MovieCard {...movie} key={movie.id} showEditPopup={showEditPopup} showDeletePopup={showDeletePopup} />
+        <MovieCard
+          {...movie}
+          key={movie.id}
+          showEditPopup={showEditPopup}
+          showDeletePopup={showDeletePopup}
+        />
       ))}
     </div>
   </>
@@ -19,6 +24,8 @@ const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
 
 MoviesList.propTypes = {
   movies: PropTypes.array,
+  showEditPopup: PropTypes.func,
+  showDeletePopup: PropTypes.func,
 };
 
 export default MoviesList;

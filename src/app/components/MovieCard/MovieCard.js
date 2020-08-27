@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './movie-card.scss';
+import './MovieCard.scss';
 
 const MovieCard = ({
   pic,
@@ -15,40 +15,40 @@ const MovieCard = ({
   const [isShownSelect, setIsShownSelect] = useState(false);
   return (
     <div
-      className="movieCard"
+      className="MovieCard"
       onMouseEnter={() => setIsShownOptions(true)}
       onMouseLeave={() => setIsShownOptions(false)}
     >
-      <div className="movieCard__imageWrapper">
-        <img className="movieCard__picture" src={pic} alt="not found"></img>
+      <div className="MovieCard__imageWrapper">
+        <img className="MovieCard__picture" src={pic} alt="not found"></img>
         {isShownOptions && (
           <button
             type="button"
-            className="movieCard__options"
+            className="MovieCard__options"
             onClick={() => {
               setIsShownOptions(false);
               setIsShownSelect(true);
             }}
           >
-            <div className="movieCard__options-dot"></div>
-            <div className="movieCard__options-dot"></div>
-            <div className="movieCard__options-dot"></div>
+            <div className="MovieCard__options-dot"></div>
+            <div className="MovieCard__options-dot"></div>
+            <div className="MovieCard__options-dot"></div>
           </button>
         )}
         {isShownSelect && (
-          <div className="movieCard__select">
+          <div className="MovieCard__select">
             <button
-              className="movieCard__select-close"
+              className="MovieCard__select-close"
               onClick={() => setIsShownSelect(false)}
             ></button>
             <button
-              className="movieCard__select-edit"
+              className="MovieCard__select-edit"
               onClick={() => showEditPopup({ id, name, ganres, year })}
             >
               Edit
             </button>
             <button
-              className="movieCard__select-delete"
+              className="MovieCard__select-delete"
               onClick={() => showDeletePopup({ id })}
             >
               Delete
@@ -56,20 +56,23 @@ const MovieCard = ({
           </div>
         )}
       </div>
-      <div className="movieCard__desctiption">
-        <div className="movieCard__name">{name}</div>
-        <div className="movieCard__ganres">{ganres}</div>
-        <div className="movieCard__year">{year}</div>
+      <div className="MovieCard__desctiption">
+        <div className="MovieCard__name">{name}</div>
+        <div className="MovieCard__ganres">{ganres}</div>
+        <div className="MovieCard__year">{year}</div>
       </div>
     </div>
   );
 };
 
 MovieCard.propTypes = {
+  id: PropTypes.number,
   pic: PropTypes.string,
   name: PropTypes.string,
   ganres: PropTypes.string,
   year: PropTypes.string,
+  showEditPopup: PropTypes.func,
+  showDeletePopup: PropTypes.func,
 };
 
 export default MovieCard;

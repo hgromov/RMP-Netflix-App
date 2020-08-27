@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './header.scss';
+import './Header.scss';
 
 const Header = ({ addMovie, handleSubmit, onChange }) => (
-  <header className="header">
+  <header className="Header">
     <div className="upper">
       <div className="upper__logo logo"></div>
       <button type="button" className="upper__addMovie" onClick={addMovie}>
