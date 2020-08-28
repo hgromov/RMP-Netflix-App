@@ -10,9 +10,10 @@ module.exports = {
     },
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    host: '0.0.0.0',
+    host: 'localhost',
     port: 5000,
     hot: true,
+    open: true,
     disableHostCheck: true,
     historyApiFallback: true,
     overlay: {

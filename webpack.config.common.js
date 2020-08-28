@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: path.resolve(__dirname, './src/index.jsx'),
   output: {
     path: path.join(__dirname, '/dist'),
     filename: '[name].bundle.js',
@@ -20,7 +20,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           {
-            loader: `postcss-loader`,
+            loader: 'postcss-loader',
             options: {
               options: {},
             },
@@ -46,9 +46,9 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: 'assets/[hash:8].[ext]',
-            context: path.resolve(__dirname, "src/"),
+            context: path.resolve(__dirname, 'src/'),
             outputPath: 'dist/',
-            useRelativePaths: true
+            useRelativePaths: true,
           },
         },
       },
