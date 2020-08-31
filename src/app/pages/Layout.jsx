@@ -7,6 +7,7 @@ import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import PopupEdit from '../components/popups/PopupEdit/PopupEdit';
 import PopupAdd from '../components/popups/PopupAdd/PopupAdd';
 import PopupDelete from '../components/popups/PopupDelete/PopupDelete';
+import moviesList from '../mock/movies';
 
 const Layout = () => {
   const [isShownAddPopup, setIsShownAddPopup] = useState(false);
@@ -15,6 +16,7 @@ const Layout = () => {
   const [editPopup, setEditPopup] = useState(null);
   const [isShownDeletePopup, setIsShownDeletePopup] = useState(false);
   const [deletePopup, setDeletePopup] = useState(null);
+  const [movies, setMovies] = useState(moviesList);
 
   return (
     <>
@@ -31,29 +33,66 @@ const Layout = () => {
               setAddPopup(
                 <PopupAdd
                   close={() => setIsShownAddPopup(false)}
-                  submit={() => {}}
-                />
+                  addMovie={(movie) => {
+                    const newMovie = {
+                      ...movie,
+                      id: movies.length + 1,
+                    };
+                    setMovies([...movies, newMovie]);
+                    setIsShownAddPopup(false);
+                  }}
+                />,
               );
               setIsShownAddPopup(true);
             }}
           />
           <ContentContainer
+            movies={movies}
             showEditPopup={(props) => {
               setEditPopup(
                 <PopupEdit
                   {...props}
                   close={() => setIsShownEditPopup(false)}
-                  submit={() => {}}
+                  editMovie={({
+                    id,
+                    title,
+                    url,
+                    genres,
+                    date,
+                    overview,
+                    runtime,
+                  }) => {
+                    const newMoviesList = moviesList.map((movie) => {
+                      let newMovie = null;
+                      if (movie.id === id) {
+                        newMovie = {
+                          title,
+                          url,
+                          genres,
+                          date,
+                          overview,
+                          runtime,
+                          id,
+                        };
+                      }
+                      return newMovie || movie;
+                    });
+                    setMovies(newMoviesList);
+                    setIsShownEditPopup(false);
+                  }}
                 />,
               );
               setIsShownEditPopup(true);
             }}
-            showDeletePopup={(props) => {
+            showDeletePopup={({ id }) => {
               setDeletePopup(
                 <PopupDelete
-                  {...props}
+                  id={id}
                   close={() => setIsShownDeletePopup(false)}
-                  submit={() => {}}
+                  deleteMovie={() => {
+                    setMovies(movies.filter((movie) => movie.id !== id));
+                    setIsShownDeletePopup(false);
+                  }}
                 />,
               );
               setIsShownDeletePopup(true);

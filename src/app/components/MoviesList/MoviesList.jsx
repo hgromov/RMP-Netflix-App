@@ -7,15 +7,23 @@ const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
   <>
     <div className="movies-counter">
       <span className="movies-counter__amount">{movies.length}</span>
-      {' '}
-      movies
-      found
+      <span> movies found</span>
     </div>
     <div className="MoviesList-wrapper">
-      {movies.map((movie) => (
+      {movies.map(({
+        title,
+        date,
+        url,
+        genres,
+        id,
+      }) => (
         <MovieCard
-          {...movie}
-          key={movie.id}
+          title={title}
+          date={date}
+          key={id}
+          id={id}
+          url={url}
+          genres={genres}
           showEditPopup={showEditPopup}
           showDeletePopup={showDeletePopup}
         />
@@ -25,9 +33,9 @@ const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
 );
 
 MoviesList.propTypes = {
-  movies: PropTypes.array,
-  showEditPopup: PropTypes.func,
-  showDeletePopup: PropTypes.func,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  showEditPopup: PropTypes.func.isRequired,
+  showDeletePopup: PropTypes.func.isRequired,
 };
 
 export default MoviesList;

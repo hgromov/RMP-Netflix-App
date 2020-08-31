@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
 
-const Header = ({ addMovie, handleSubmit, onChange }) => (
+const Header = ({ showAddMoviePopup, handleSubmit, onChange }) => (
   <header className="Header">
     <div className="upper">
       <div className="upper__logo logo" />
-      <button type="button" className="upper__addMovie" onClick={addMovie}>
+      <button type="button" className="upper__addMovie" onClick={showAddMoviePopup}>
         <span className="upper__addMovieText">+ ADD MOVIE</span>
       </button>
     </div>
@@ -28,9 +28,9 @@ const Header = ({ addMovie, handleSubmit, onChange }) => (
 );
 
 Header.propTypes = {
-  addMovie: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  onChange: PropTypes.func,
+  showAddMoviePopup: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Header;

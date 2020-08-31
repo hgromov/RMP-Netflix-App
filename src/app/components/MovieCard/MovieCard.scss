@@ -100,15 +100,15 @@
     color: #e1e1e1;
   }
 
-  &__name {
+  &__title {
     grid-area: n;
   }
 
-  &__ganres {
+  &__genres {
     grid-area: g;
   }
 
-  &__year {
+  &__date {
     grid-area: y;
     border: 1px solid #e1e1e1;
     border-radius: 3px;

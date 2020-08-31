@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Content from '../../components/Content/Content';
-import movies from '../../mock/movies';
 
-const ContentContainer = ({ showEditPopup, showDeletePopup }) => (
+const ContentContainer = ({ showEditPopup, showDeletePopup, movies }) => (
   <Content
     handleSubmitCategory={() => {}}
     handleSubmitSort={() => {}}
@@ -14,8 +13,9 @@ const ContentContainer = ({ showEditPopup, showDeletePopup }) => (
 );
 
 ContentContainer.propTypes = {
-  showEditPopup: PropTypes.func,
-  showDeletePopup: PropTypes.func,
+  showEditPopup: PropTypes.func.isRequired,
+  showDeletePopup: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ContentContainer;

@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './PopupAdd.scss';
 
-const PopupAdd = ({ close }) => {
+const PopupAdd = ({ close, addMovie }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [url, setUrl] = useState('');
@@ -13,7 +15,11 @@ const PopupAdd = ({ close }) => {
   return (
     <div className="PopupAdd-wrapper">
       <div className="PopupAdd">
-        <button className="PopupAdd__close-btn" onClick={() => close()} />
+        <button
+          type="button"
+          className="PopupAdd__close-btn"
+          onClick={() => close()}
+        />
         <h2 className="PopupAdd__heading">ADD MOVIE</h2>
 
         <div className="PopupAdd__form">
@@ -72,10 +78,34 @@ const PopupAdd = ({ close }) => {
             />
           </label>
           <div className="PopupAdd__buttons">
-            <button className="PopupAdd__reset-btn" onClick={() => {}}>
+            <button
+              type="button"
+              className="PopupAdd__reset-btn"
+              onClick={() => {
+                setTitle('');
+                setDate('');
+                setUrl('');
+                setGenres('');
+                setOverview('');
+                setRuntime('');
+              }}
+            >
               RESET
             </button>
-            <button className="PopupAdd__save-btn" onClick={() => {}}>
+            <button
+              type="button"
+              className="PopupAdd__save-btn"
+              onClick={() => {
+                addMovie({
+                  title,
+                  date,
+                  url,
+                  genres: genres.split(', '),
+                  overview,
+                  runtime,
+                });
+              }}
+            >
               SAVE
             </button>
           </div>
@@ -86,7 +116,8 @@ const PopupAdd = ({ close }) => {
 };
 
 PopupAdd.propTypes = {
-  close: PropTypes.func,
+  close: PropTypes.func.isRequired,
+  addMovie: PropTypes.func.isRequired,
 };
 
 export default PopupAdd;

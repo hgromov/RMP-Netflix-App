@@ -1,13 +1,16 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './MovieCard.scss';
 
 const MovieCard = ({
-  pic,
-  name,
-  ganres,
-  year,
+  url,
+  title,
+  genres,
+  date,
   id,
+  overview,
+  runtime,
   showEditPopup,
   showDeletePopup,
 }) => {
@@ -20,7 +23,7 @@ const MovieCard = ({
       onMouseLeave={() => setIsShownOptions(false)}
     >
       <div className="MovieCard__imageWrapper">
-        <img className="MovieCard__picture" src={pic} alt="not found" />
+        <img className="MovieCard__picture" src={url} alt="not found" />
         {isShownOptions && (
           <button
             type="button"
@@ -38,18 +41,27 @@ const MovieCard = ({
         {isShownSelect && (
           <div className="MovieCard__select">
             <button
+              type="button"
               className="MovieCard__select-close"
               onClick={() => setIsShownSelect(false)}
             />
             <button
+              type="button"
               className="MovieCard__select-edit"
               onClick={() => showEditPopup({
-                id, name, ganres, year,
+                url,
+                title,
+                genres,
+                date,
+                id,
+                overview,
+                runtime,
               })}
             >
               Edit
             </button>
             <button
+              type="button"
               className="MovieCard__select-delete"
               onClick={() => showDeletePopup({ id })}
             >
@@ -59,22 +71,31 @@ const MovieCard = ({
         )}
       </div>
       <div className="MovieCard__desctiption">
-        <div className="MovieCard__name">{name}</div>
-        <div className="MovieCard__ganres">{ganres}</div>
-        <div className="MovieCard__year">{year}</div>
+        <div className="title">{title}</div>
+        <div className="MovieCard__genres">
+          {genres.length === 2 ? genres.join(' / ') : genres.join(', ')}
+        </div>
+        <div className="MovieCard__date">{date}</div>
       </div>
     </div>
   );
 };
 
 MovieCard.propTypes = {
-  id: PropTypes.number,
-  pic: PropTypes.string,
-  name: PropTypes.string,
-  ganres: PropTypes.string,
-  year: PropTypes.string,
-  showEditPopup: PropTypes.func,
-  showDeletePopup: PropTypes.func,
+  id: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  runtime: PropTypes.string,
+  overview: PropTypes.string,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  date: PropTypes.string.isRequired,
+  showEditPopup: PropTypes.func.isRequired,
+  showDeletePopup: PropTypes.func.isRequired,
+};
+
+MovieCard.defaultProps = {
+  runtime: '',
+  overview: '',
 };
 
 export default MovieCard;

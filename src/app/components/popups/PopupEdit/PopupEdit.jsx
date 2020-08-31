@@ -1,19 +1,35 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './PopupEdit.scss';
 
-const PopupEdit = ({ name, ganres, year, id, close, submit }) => {
-  const [title, setTitle] = useState(name);
-  const [date, setDate] = useState(year);
-  const [url, setUrl] = useState('');
-  const [genres, setGenres] = useState(ganres);
-  const [overview, setOverview] = useState('');
-  const [runtime, setRuntime] = useState('');
+const PopupEdit = ({
+  title: titleDefault,
+  url: urlDefault,
+  genres: genresDefault,
+  date: dateDefault,
+  overview: overviewDefault,
+  runtime: runtimeDefault,
+  id,
+  close,
+  editMovie,
+}) => {
+  const [title, setTitle] = useState(titleDefault);
+  const [url, setUrl] = useState(urlDefault);
+  const [genres, setGenres] = useState(genresDefault);
+  const [date, setDate] = useState(dateDefault);
+  const [overview, setOverview] = useState(overviewDefault);
+  const [runtime, setRuntime] = useState(runtimeDefault);
 
   return (
     <div className="PopupEdit-wrapper">
       <div className="PopupEdit">
-        <button className="PopupEdit__close-btn" onClick={() => close()} />
+        <button
+          type="button"
+          className="PopupEdit__close-btn"
+          onClick={() => close()}
+        />
         <h2 className="PopupEdit__heading">EDIT MOVIE</h2>
         <span className="PopupEdit__label">MOVIE ID</span>
         <span className="PopupEdit__id">{id}</span>
@@ -73,10 +89,35 @@ const PopupEdit = ({ name, ganres, year, id, close, submit }) => {
             />
           </label>
           <div className="PopupEdit__buttons">
-            <button type="button" className="PopupEdit__reset-btn" onClick={() => {}}>
+            <button
+              type="button"
+              className="PopupEdit__reset-btn"
+              onClick={() => {
+                setTitle(titleDefault);
+                setUrl(urlDefault);
+                setGenres(genresDefault);
+                setDate(dateDefault);
+                setOverview(overviewDefault);
+                setRuntime(runtimeDefault);
+              }}
+            >
               RESET
             </button>
-            <button type="button" className="PopupEdit__save-btn" onClick={() => {}}>
+            <button
+              type="button"
+              className="PopupEdit__save-btn"
+              onClick={() => {
+                editMovie({
+                  title,
+                  url,
+                  genres,
+                  date,
+                  overview,
+                  runtime,
+                  id,
+                });
+              }}
+            >
               SAVE
             </button>
           </div>
@@ -87,11 +128,15 @@ const PopupEdit = ({ name, ganres, year, id, close, submit }) => {
 };
 
 PopupEdit.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  ganres: PropTypes.string,
-  year: PropTypes.string,
-  close: PropTypes.func,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  date: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  runtime: PropTypes.string.isRequired,
+  close: PropTypes.func.isRequired,
+  editMovie: PropTypes.func.isRequired,
 };
 
 export default PopupEdit;

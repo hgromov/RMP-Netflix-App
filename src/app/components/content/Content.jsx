@@ -25,11 +25,11 @@ const Content = ({
 );
 
 Content.propTypes = {
-  handleSubmitCategory: PropTypes.func,
-  handleSubmitSort: PropTypes.func,
-  movies: PropTypes.array,
-  showEditPopup: PropTypes.func,
-  showDeletePopup: PropTypes.func,
+  handleSubmitCategory: PropTypes.func.isRequired,
+  handleSubmitSort: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  showEditPopup: PropTypes.func.isRequired,
+  showDeletePopup: PropTypes.func.isRequired,
 };
 
 export default Content;

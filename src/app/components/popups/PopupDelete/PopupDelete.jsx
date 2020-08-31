@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React from 'react';
 import PropTypes from 'prop-types';
 import './PopupDelete.scss';
 
-const PopupDelete = ({ close, submit }) => (
+const PopupDelete = ({ close, deleteMovie }) => (
   <div className="PopupDelete-wrapper">
     <div className="PopupDelete">
-      <button className="PopupDelete__close-btn" onClick={() => close()} />
+      <button
+        type="button"
+        className="PopupDelete__close-btn"
+        onClick={() => close()}
+      />
       <h2 className="PopupDelete__heading">DELETE MOVIE</h2>
       <span className="PopupDelete__label">
         Are you sure you want to delete this movie?
       </span>
-      <button className="PopupDelete__confirm" onClick={() => submit()}>
+      <button type="button" className="PopupDelete__confirm" onClick={() => deleteMovie()}>
         CONFIRM
       </button>
     </div>
@@ -18,8 +23,8 @@ const PopupDelete = ({ close, submit }) => (
 );
 
 PopupDelete.propTypes = {
-  close: PropTypes.func,
-  submit: PropTypes.func,
+  close: PropTypes.func.isRequired,
+  deleteMovie: PropTypes.func.isRequired,
 };
 
 export default PopupDelete;

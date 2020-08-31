@@ -66,10 +66,12 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
       <div className="sort">
         <h2 className="sort__heading">SORT BY</h2>
         <select onChange={handleSubmitSort} className="sort__select">
-          <option defaultValue value="newest">
+          <option defaultValue value="newest" className="sort__option">
             RELEASE DATE
           </option>
-          <option value="oldest">oldest</option>
+          <option value="oldest" className="sort__option">
+            oldest
+          </option>
         </select>
       </div>
     </div>

@@ -4,14 +4,14 @@ import Header from '../../components/Header/Header';
 
 const HeaderContainer = ({ showAddMoviePopup }) => (
   <Header
-    addMovie={showAddMoviePopup}
+    showAddMoviePopup={showAddMoviePopup}
     handleSubmit={() => {}}
     onChange={() => {}}
   />
 );
 
 HeaderContainer.propTypes = {
-  showAddMoviePopup: PropTypes.func,
+  showAddMoviePopup: PropTypes.func.isRequired,
 };
 
 export default HeaderContainer;
