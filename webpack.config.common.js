@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.jsx'),
+  entry: ['babel-polyfill', path.resolve(__dirname, './src/index.jsx')],
   output: {
     path: path.join(__dirname, '/dist'),
     filename: '[name].bundle.js',

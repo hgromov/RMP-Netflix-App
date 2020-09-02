@@ -22,6 +22,16 @@ const Layout = () => {
   const [editPopup, setEditPopup] = useState(null);
   const [isShownDeletePopup, setIsShownDeletePopup] = useState(false);
   const [deletePopup, setDeletePopup] = useState(null);
+  // const [data, setData] = useState({});
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const res = await fetch('http://localhost:4000/movies/337167');
+  //     const movie = await res.json();
+  //     setData(movie);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const showMovieDetails = (id) => {
     setMovieDetails(movies.find((movie) => movie.id === id));
