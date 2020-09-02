@@ -10,6 +10,7 @@ const Content = ({
   movies,
   showEditPopup,
   showDeletePopup,
+  showMovieDetails,
 }) => (
   <div className="Content">
     <FilterSort
@@ -20,6 +21,7 @@ const Content = ({
       movies={movies}
       showEditPopup={showEditPopup}
       showDeletePopup={showDeletePopup}
+      showMovieDetails={showMovieDetails}
     />
   </div>
 );
@@ -30,6 +32,7 @@ Content.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   showEditPopup: PropTypes.func.isRequired,
   showDeletePopup: PropTypes.func.isRequired,
+  showMovieDetails: PropTypes.func.isRequired,
 };
 
 export default Content;

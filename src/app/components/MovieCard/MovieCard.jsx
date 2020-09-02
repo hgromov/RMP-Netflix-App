@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -13,6 +15,7 @@ const MovieCard = ({
   runtime,
   showEditPopup,
   showDeletePopup,
+  showMovieDetails,
 }) => {
   const [isShownOptions, setIsShownOptions] = useState(false);
   const [isShownSelect, setIsShownSelect] = useState(false);
@@ -23,7 +26,14 @@ const MovieCard = ({
       onMouseLeave={() => setIsShownOptions(false)}
     >
       <div className="MovieCard__imageWrapper">
-        <img className="MovieCard__picture" src={url} alt="not found" />
+        <img
+          className="MovieCard__picture"
+          src={url}
+          alt="not found"
+          onClick={() => {
+            showMovieDetails(id);
+          }}
+        />
         {isShownOptions && (
           <button
             type="button"
@@ -91,6 +101,7 @@ MovieCard.propTypes = {
   date: PropTypes.string.isRequired,
   showEditPopup: PropTypes.func.isRequired,
   showDeletePopup: PropTypes.func.isRequired,
+  showMovieDetails: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {

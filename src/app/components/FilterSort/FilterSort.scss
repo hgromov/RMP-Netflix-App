@@ -18,7 +18,7 @@
     font-size: 14px;
     font-weight: normal;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    color: #ccc;
     cursor: pointer;
   }
 
@@ -68,7 +68,8 @@
   }
   &__select {
     background: transparent;
-    color: white;
+    color: #ccc
+;
     border: 0;
   }
   &__option {

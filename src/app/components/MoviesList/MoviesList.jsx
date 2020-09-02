@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard/MovieCard';
 import './MoviesList.scss';
 
-const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
+const MoviesList = ({
+  movies, showEditPopup, showDeletePopup, showMovieDetails,
+}) => (
   <>
     <div className="movies-counter">
       <span className="movies-counter__amount">{movies.length}</span>
@@ -26,6 +28,7 @@ const MoviesList = ({ movies, showEditPopup, showDeletePopup }) => (
           genres={genres}
           showEditPopup={showEditPopup}
           showDeletePopup={showDeletePopup}
+          showMovieDetails={showMovieDetails}
         />
       ))}
     </div>
@@ -36,6 +39,7 @@ MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   showEditPopup: PropTypes.func.isRequired,
   showDeletePopup: PropTypes.func.isRequired,
+  showMovieDetails: PropTypes.func.isRequired,
 };
 
 export default MoviesList;

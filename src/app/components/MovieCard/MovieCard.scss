@@ -58,7 +58,7 @@
     &-close {
       width: 20px;
       height: 20px;
-      color: white;
+      color: #ccc;
       background: url('../../assets/icons/close-sign.svg') no-repeat;
       background-size: contain;
       align-self: flex-end;
@@ -68,7 +68,7 @@
     &-edit {
       background: transparent;
       text-align: left;
-      color: white;
+      color: #ccc;
       padding-left: 20px;
       line-height: 1.5;
       &:hover {
@@ -78,7 +78,7 @@
     &-delete {
       text-align: left;
       background: transparent;
-      color: white;
+      color: #ccc;
       padding-left: 20px;
       line-height: 1.5;
       margin-bottom: 10px;

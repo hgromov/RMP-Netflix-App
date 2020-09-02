@@ -4,7 +4,7 @@ export default [
     url:
       'https://images-na.ssl-images-amazon.com/images/I/51zUbui%2BgbL._SY445_.jpg',
     title: 'The Shawshank Redemption',
-    genres: ['drama', 'crime'],
+    genres: ['Drama', 'Crime'],
     date: '1994',
     overview: 'lorem...',
     runtime: 'lorem...',
@@ -14,7 +14,7 @@ export default [
     url:
       'https://upload.wikimedia.org/wikipedia/en/1/1d/The_Shining_%281980%29_U.K._release_poster_-_The_tide_of_terror_that_swept_America_IS_HERE.jpg',
     title: 'The Shining',
-    genres: ['horror', 'crime'],
+    genres: ['Horror', 'Crime'],
     date: '1980',
     overview: 'lorem...',
     runtime: 'lorem...',
@@ -34,7 +34,7 @@ export default [
     url:
       'https://m.media-amazon.com/images/M/MV5BZDAwYTlhMDEtNTg0OS00NDY2LWJjOWItNWY3YTZkM2UxYzUzXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg',
     title: 'Leon',
-    genres: ['Action', 'crime', 'drama'],
+    genres: ['Action', 'Crime', 'Drama'],
     date: '1994',
     overview: 'lorem...',
     runtime: 'lorem...',
@@ -48,5 +48,16 @@ export default [
     date: '2001',
     overview: 'lorem...',
     runtime: 'lorem...',
+  },
+  {
+    id: 6,
+    url: 'https://s1.livelib.ru/boocover/1000530481/o/10c8/Quentin_Tarantino__Pulp_Fiction_A_Quentin_Tarantino_Screenplay.jpeg',
+    title: 'Pulp Fiction',
+    genres: ['Crime', 'Comedy'],
+    date: '1994',
+    raiting: 4.3,
+    description: 'Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles. The title refers to the pulp magazines and hardboiled crime novels popular during the mid-20th century, known for their graphic violence and punchy dialogue.',
+    overview: 'Oscar winning Movie',
+    runtime: '154 min',
   },
 ];

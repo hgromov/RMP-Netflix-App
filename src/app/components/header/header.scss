@@ -2,6 +2,10 @@
   height: 50vh;
   padding: 10px;
   position: relative;
+  &--expanded {
+    min-height: 300px;
+    height: 70vh;
+  }
 }
 
 .Header::before {
@@ -15,7 +19,7 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  filter: blur(2px) brightness(20%);
+  filter: blur(2px) brightness(10%);
 }
 
 .upper {
@@ -34,7 +38,16 @@
     outline: none;
   }
   &__addMovieText {
-    color: rgb(246, 82, 97, 1);
+    color: rgb(246, 82, 97);
+  }
+  &__search {
+    border: none;
+    background: url('../../assets/icons/search-sign.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    margin-top: 3px;
   }
 }
 
@@ -50,7 +63,7 @@
     font-family: sans-serif;
     font-weight: 100;
     letter-spacing: 2px;
-    color: white;
+    color: #ccc;
   }
   &__form {
     width: 100%;
@@ -66,7 +79,7 @@
     height: 40px;
     margin-right: 1.5%;
     outline: none;
-    color: white;
+    color: #ccc;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     padding-left: 2%;
@@ -74,8 +87,8 @@
 
   &__button {
     border: none;
-    background: rgb(246, 82, 97, 1);
-    color: white;
+    background: rgb(246, 82, 97);
+    color: #ccc;
     cursor: pointer;
     border-radius: 5px;
     width: 29%;
@@ -83,5 +96,63 @@
     height: 42px;
     font-size: 16px;
     outline: none;
+  }
+}
+
+.movieDetails {
+  position: relative;
+  margin: 30px 40px 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ccc;
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    &-wrapper {
+      max-width: 250px;
+      height: 350px;
+      margin-right: 50px;
+    }
+  }
+  &__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__title {
+    margin: 0;
+    margin-right: 20px;
+  }
+  &__raiting {
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 20px;
+    &--red {
+      color: red;
+    }
+    &--orange {
+      color: orange;
+    }
+    &--green {
+      color: green;
+    }
+  }
+  &__overview {
+    margin: 0;
+    font-size: 14px;
+    font-weight: normal;
+  }
+  &__time {
+    margin: 20px 0;
+    color: rgb(246, 82, 97);
+    font-size: 20px;
+  }
+  &__date {
+    margin-right: 20px;
   }
 }
