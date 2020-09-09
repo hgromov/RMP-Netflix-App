@@ -1,28 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Content from '../../components/Content/Content';
-
-const ContentContainer = ({
+import {
+  getMoviesList,
   showEditPopup,
   showDeletePopup,
-  showMovieDetails,
-  movies,
-}) => (
-  <Content
-    handleSubmitCategory={() => {}}
-    handleSubmitSort={() => {}}
-    movies={movies}
-    showMovieDetails={showMovieDetails}
-    showEditPopup={showEditPopup}
-    showDeletePopup={showDeletePopup}
-  />
-);
+  getMovieDetails,
+} from '../../../store/actions';
 
-ContentContainer.propTypes = {
-  showEditPopup: PropTypes.func.isRequired,
-  showDeletePopup: PropTypes.func.isRequired,
-  showMovieDetails: PropTypes.func.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+const ContentContainer = () => {
+  const movies = useSelector((state) => state.movies);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMoviesList());
+  }, []);
+  const dispatchShowEditPopup = useCallback((id) => {
+    dispatch(showEditPopup(id));
+  });
+  const dispatchShowDeletePopup = useCallback((id) => {
+    dispatch(showDeletePopup(id));
+  });
+  const dispatchShowMovieDetails = useCallback((id) => {
+    dispatch(getMovieDetails(id));
+  });
+
+  return (
+    <Content
+      handleSubmitCategory={() => {}}
+      handleSubmitSort={() => {}}
+      movies={movies}
+      showMovieDetails={dispatchShowMovieDetails}
+      showEditPopup={dispatchShowEditPopup}
+      showDeletePopup={dispatchShowDeletePopup}
+    />
+  );
 };
 
 export default ContentContainer;

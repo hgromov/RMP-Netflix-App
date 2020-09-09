@@ -6,13 +6,11 @@ import PropTypes from 'prop-types';
 import './MovieCard.scss';
 
 const MovieCard = ({
-  url,
+  posterPath,
   title,
   genres,
   date,
   id,
-  overview,
-  runtime,
   showEditPopup,
   showDeletePopup,
   showMovieDetails,
@@ -28,7 +26,7 @@ const MovieCard = ({
       <div className="MovieCard__imageWrapper">
         <img
           className="MovieCard__picture"
-          src={url}
+          src={posterPath}
           alt="not found"
           onClick={() => {
             showMovieDetails(id);
@@ -58,22 +56,14 @@ const MovieCard = ({
             <button
               type="button"
               className="MovieCard__select-edit"
-              onClick={() => showEditPopup({
-                url,
-                title,
-                genres,
-                date,
-                id,
-                overview,
-                runtime,
-              })}
+              onClick={() => showEditPopup(id)}
             >
               Edit
             </button>
             <button
               type="button"
               className="MovieCard__select-delete"
-              onClick={() => showDeletePopup({ id })}
+              onClick={() => showDeletePopup(id)}
             >
               Delete
             </button>
@@ -85,7 +75,7 @@ const MovieCard = ({
         <div className="MovieCard__genres">
           {genres.length === 2 ? genres.join(' / ') : genres.join(', ')}
         </div>
-        <div className="MovieCard__date">{date}</div>
+        <div className="MovieCard__date">{date.substr(0, 4)}</div>
       </div>
     </div>
   );
@@ -93,10 +83,8 @@ const MovieCard = ({
 
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired,
+  posterPath: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  runtime: PropTypes.string,
-  overview: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   date: PropTypes.string.isRequired,
   showEditPopup: PropTypes.func.isRequired,
@@ -104,9 +92,5 @@ MovieCard.propTypes = {
   showMovieDetails: PropTypes.func.isRequired,
 };
 
-MovieCard.defaultProps = {
-  runtime: '',
-  overview: '',
-};
 
 export default MovieCard;

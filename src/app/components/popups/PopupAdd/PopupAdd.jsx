@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './PopupAdd.scss';
 
-const PopupAdd = ({ close, addMovie }) => {
+const PopupAdd = ({ isVisible, close, addMovie }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
-  const [url, setUrl] = useState('');
+  const [posterPath, setPosterPath] = useState('');
   const [genres, setGenres] = useState('');
   const [overview, setOverview] = useState('');
-  const [runtime, setRuntime] = useState('');
+  const [runtime, setRuntime] = useState(0);
 
   return (
-    <div className="PopupAdd-wrapper">
+    <div className={`PopupAdd-wrapper${isVisible ? '' : '--hiden'}`}>
       <div className="PopupAdd">
         <button
           type="button"
@@ -36,7 +36,7 @@ const PopupAdd = ({ close, addMovie }) => {
             RELEASE DATE
             <input
               className="PopupAdd__input"
-              type="text"
+              type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
@@ -46,8 +46,8 @@ const PopupAdd = ({ close, addMovie }) => {
             <input
               className="PopupAdd__input"
               type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              value={posterPath}
+              onChange={(e) => setPosterPath(e.target.value)}
             />
           </label>
           <label className="PopupAdd__label">
@@ -72,9 +72,9 @@ const PopupAdd = ({ close, addMovie }) => {
             RUNTIME
             <input
               className="PopupAdd__input"
-              type="text"
+              type="number"
               value={runtime}
-              onChange={(e) => setRuntime(e.target.value)}
+              onChange={(e) => setRuntime(+e.target.value)}
             />
           </label>
           <div className="PopupAdd__buttons">
@@ -84,7 +84,7 @@ const PopupAdd = ({ close, addMovie }) => {
               onClick={() => {
                 setTitle('');
                 setDate('');
-                setUrl('');
+                setPosterPath('');
                 setGenres('');
                 setOverview('');
                 setRuntime('');
@@ -99,7 +99,7 @@ const PopupAdd = ({ close, addMovie }) => {
                 addMovie({
                   title,
                   date,
-                  url,
+                  posterPath,
                   genres: genres.split(', '),
                   overview,
                   runtime,
@@ -118,6 +118,7 @@ const PopupAdd = ({ close, addMovie }) => {
 PopupAdd.propTypes = {
   close: PropTypes.func.isRequired,
   addMovie: PropTypes.func.isRequired,
+  isVisible: PropTypes.bool.isRequired,
 };
 
 export default PopupAdd;

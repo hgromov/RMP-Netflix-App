@@ -6,24 +6,25 @@ import './PopupEdit.scss';
 
 const PopupEdit = ({
   title: titleDefault,
-  url: urlDefault,
+  posterPath: posterPathDefault,
   genres: genresDefault,
   date: dateDefault,
   overview: overviewDefault,
   runtime: runtimeDefault,
   id,
   close,
+  isVisible,
   editMovie,
 }) => {
   const [title, setTitle] = useState(titleDefault);
-  const [url, setUrl] = useState(urlDefault);
+  const [posterPath, setPosterPath] = useState(posterPathDefault);
   const [genres, setGenres] = useState(genresDefault);
   const [date, setDate] = useState(dateDefault);
   const [overview, setOverview] = useState(overviewDefault);
   const [runtime, setRuntime] = useState(runtimeDefault);
 
   return (
-    <div className="PopupEdit-wrapper">
+    <div className={`PopupEdit-wrapper${isVisible ? '' : '--hiden'}`}>
       <div className="PopupEdit">
         <button
           type="button"
@@ -47,7 +48,7 @@ const PopupEdit = ({
             RELEASE DATE
             <input
               className="PopupEdit__input"
-              type="text"
+              type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
@@ -57,8 +58,8 @@ const PopupEdit = ({
             <input
               className="PopupEdit__input"
               type="text"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              value={posterPath}
+              onChange={(e) => setPosterPath(e.target.value)}
             />
           </label>
           <label className="PopupEdit__label">
@@ -83,7 +84,7 @@ const PopupEdit = ({
             RUNTIME
             <input
               className="PopupEdit__input"
-              type="text"
+              type="number"
               value={runtime}
               onChange={(e) => setRuntime(e.target.value)}
             />
@@ -94,7 +95,7 @@ const PopupEdit = ({
               className="PopupEdit__reset-btn"
               onClick={() => {
                 setTitle(titleDefault);
-                setUrl(urlDefault);
+                setPosterPath(posterPathDefault);
                 setGenres(genresDefault);
                 setDate(dateDefault);
                 setOverview(overviewDefault);
@@ -109,7 +110,7 @@ const PopupEdit = ({
               onClick={() => {
                 editMovie({
                   title,
-                  url,
+                  posterPath,
                   genres,
                   date,
                   overview,
@@ -129,12 +130,13 @@ const PopupEdit = ({
 
 PopupEdit.propTypes = {
   id: PropTypes.number.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
+  posterPath: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   date: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  runtime: PropTypes.string.isRequired,
+  runtime: PropTypes.number.isRequired,
   close: PropTypes.func.isRequired,
   editMovie: PropTypes.func.isRequired,
 };

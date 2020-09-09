@@ -1,8 +1,12 @@
 .PopupDelete {
   &-wrapper {
+    display: block;
     position: absolute;
     width: 100%;
     top: 0;
+    &--hiden {
+      display: none;
+    }
   }
   position: relative;
   margin: 100px auto;

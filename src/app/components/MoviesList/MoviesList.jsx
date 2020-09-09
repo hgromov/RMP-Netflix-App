@@ -15,7 +15,7 @@ const MoviesList = ({
       {movies.map(({
         title,
         date,
-        url,
+        posterPath,
         genres,
         id,
       }) => (
@@ -24,7 +24,7 @@ const MoviesList = ({
           date={date}
           key={id}
           id={id}
-          url={url}
+          posterPath={posterPath}
           genres={genres}
           showEditPopup={showEditPopup}
           showDeletePopup={showDeletePopup}

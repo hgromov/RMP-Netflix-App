@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './PopupDelete.scss';
 
-const PopupDelete = ({ close, deleteMovie }) => (
-  <div className="PopupDelete-wrapper">
+const PopupDelete = ({ close, deleteMovie, isVisible }) => (
+  <div className={`PopupDelete-wrapper${isVisible ? '' : '--hiden'}`}>
     <div className="PopupDelete">
       <button
         type="button"
@@ -25,6 +25,7 @@ const PopupDelete = ({ close, deleteMovie }) => (
 PopupDelete.propTypes = {
   close: PropTypes.func.isRequired,
   deleteMovie: PropTypes.func.isRequired,
+  isVisible: PropTypes.bool.isRequired,
 };
 
 export default PopupDelete;

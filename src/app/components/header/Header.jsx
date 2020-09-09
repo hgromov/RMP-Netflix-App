@@ -37,7 +37,7 @@ const Header = ({
         <div className="movieDetails__image-wrapper">
           <img
             className="movieDetails__image"
-            src={movieDetails.url}
+            src={movieDetails.posterPath}
             alt="not found"
           />
         </div>
@@ -45,16 +45,18 @@ const Header = ({
           <div className="movieDetails__main">
             <h1 className="movieDetails__title">{movieDetails.title}</h1>
             <div
-              className={(`movieDetails__raiting movieDetails__raiting--${getRaitingColor(movieDetails.raiting)}`)}
+              className={`movieDetails__raiting movieDetails__raiting--${getRaitingColor(movieDetails.voteAverage)}`}
             >
-              {movieDetails.raiting}
+              {movieDetails.voteAverage}
             </div>
           </div>
           <h4 className="movieDetails__overview">{movieDetails.overview}</h4>
           <div className="movieDetails__time">
-            <span className="movieDetails__date">{movieDetails.date}</span>
+            <span className="movieDetails__date">
+              {movieDetails.date.substr(0, 4)}
+            </span>
             <span className="movieDetails__runtime">
-              {movieDetails.runtime}
+              {`${movieDetails.runtime} min`}
             </span>
           </div>
           <p className="movieDetails__description">
