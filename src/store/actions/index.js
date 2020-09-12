@@ -10,6 +10,8 @@ import {
   HIDE_EDIT_MOVIE_POPUP,
   SHOW_DELETE_MOVIE_POPUP,
   HIDE_DELETE_MOVIE_POPUP,
+  FILTER_BY_GENRE,
+  SORT,
 } from '../types';
 import { toCamel, toUnderscore } from '../../app/common/services/renameMovieKeyNames';
 
@@ -20,8 +22,9 @@ export const getMoviesListSuccess = (moviesList) => ({
   payload: moviesList,
 });
 export const getMoviesList = () => async (dispatch) => {
-  const res = await fetch('http://localhost:4000/movies/?limit=10', {
-    'Content-Type': 'text/html',
+  const res = await fetch('http://localhost:4000/movies/?limit=50', {
+    'Content-Type': 'application/json',
+    method: 'GET',
   });
   const movies = await res.json();
   const { data } = movies;
@@ -94,3 +97,57 @@ export const getMovieDetails = (id) => async (dispatch) => {
   dispatch(showMovieDetails(movie));
 };
 export const hideMovieDetails = () => ({ type: HIDE_MOVIE_DETAILS });
+
+export const filterByGenre = (movies) => ({
+  type: FILTER_BY_GENRE,
+  payload: movies,
+});
+export const fetchByGenre = (genre) => async (dispatch) => {
+  const res = await fetch(`http://localhost:4000/movies/?limit=50&filter=${genre}`, {
+    'Content-Type': 'application/json',
+  });
+  const movies = await res.json();
+  const { data } = movies;
+  dispatch(filterByGenre(mapToCamel(data)));
+};
+
+export const withSorting = (movies) => ({
+  type: SORT,
+  payload: movies,
+});
+export const fetchWithSorting = (keyWord) => async (dispatch) => {
+  const params = {
+    sortBy: '',
+    sortOrder: '',
+  };
+  switch (keyWord) {
+    case 'newest': {
+      params.sortBy = 'release_date';
+      params.sortOrder = 'desc';
+      break;
+    }
+    case 'oldest': {
+      params.sortBy = 'release_date';
+      params.sortOrder = 'asb';
+      break;
+    }
+    case 'voteDesc': {
+      params.sortBy = 'vote_average';
+      params.sortOrder = 'desc';
+      break;
+    }
+    case 'voteAsc': {
+      params.sortBy = 'vote_average';
+      params.sortOrder = 'desc';
+      break;
+    }
+    default: return;
+  }
+  const { sortBy, sortOrder } = params;
+  const res = await fetch(`http://localhost:4000/movies/?limit=50&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+    'Content-Type': 'application/json',
+  });
+  const movies = await res.json();
+  const { data } = movies;
+  dispatch(withSorting(mapToCamel(data)));
+};

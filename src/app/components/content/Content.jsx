@@ -5,7 +5,7 @@ import MoviesList from '../MoviesList/MoviesList';
 import './Content.scss';
 
 const Content = ({
-  handleSubmitCategory,
+  handleSubmitFilter,
   handleSubmitSort,
   movies,
   showEditPopup,
@@ -14,7 +14,7 @@ const Content = ({
 }) => (
   <div className="Content">
     <FilterSort
-      handleSubmitCategory={handleSubmitCategory}
+      handleSubmitFilter={handleSubmitFilter}
       handleSubmitSort={handleSubmitSort}
     />
     <MoviesList
@@ -27,7 +27,7 @@ const Content = ({
 );
 
 Content.propTypes = {
-  handleSubmitCategory: PropTypes.func.isRequired,
+  handleSubmitFilter: PropTypes.func.isRequired,
   handleSubmitSort: PropTypes.func.isRequired,
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   showEditPopup: PropTypes.func.isRequired,

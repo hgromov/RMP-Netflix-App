@@ -10,6 +10,8 @@ import {
   HIDE_EDIT_MOVIE_POPUP,
   SHOW_DELETE_MOVIE_POPUP,
   HIDE_DELETE_MOVIE_POPUP,
+  FILTER_BY_GENRE,
+  SORT,
 } from '../types';
 
 const rootReducer = (state, action) => {
@@ -95,6 +97,18 @@ const rootReducer = (state, action) => {
       return {
         ...state,
         movieDetails: null,
+      };
+    }
+    case FILTER_BY_GENRE: {
+      return {
+        ...state,
+        movies: action.payload,
+      };
+    }
+    case SORT: {
+      return {
+        ...state,
+        movies: action.payload,
       };
     }
     default:

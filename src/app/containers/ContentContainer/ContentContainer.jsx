@@ -6,6 +6,8 @@ import {
   showEditPopup,
   showDeletePopup,
   getMovieDetails,
+  fetchByGenre,
+  fetchWithSorting,
 } from '../../../store/actions';
 
 const ContentContainer = () => {
@@ -23,11 +25,18 @@ const ContentContainer = () => {
   const dispatchShowMovieDetails = useCallback((id) => {
     dispatch(getMovieDetails(id));
   });
+  const dispatchFilterByGenre = useCallback((genre) => {
+    dispatch(fetchByGenre(genre));
+  });
+  const dispatchFetchWithSorting = useCallback((e) => {
+    const { value: keyWord } = e.target;
+    dispatch(fetchWithSorting(keyWord));
+  });
 
   return (
     <Content
-      handleSubmitCategory={() => {}}
-      handleSubmitSort={() => {}}
+      handleSubmitFilter={dispatchFilterByGenre}
+      handleSubmitSort={dispatchFetchWithSorting}
       movies={movies}
       showMovieDetails={dispatchShowMovieDetails}
       showEditPopup={dispatchShowEditPopup}

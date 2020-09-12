@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './FilterSort.scss';
 
-const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
+const FilterSort = ({ handleSubmitFilter, handleSubmitSort }) => (
   <>
     <div className="FilterSort-wrapper">
       <div className="filter">
@@ -12,8 +12,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
           id="all"
           type="radio"
           name="category"
-          value="all"
-          onClick={handleSubmitCategory}
+          onClick={() => handleSubmitFilter('')}
         />
         <label className="filter__label" htmlFor="all">
           ALL
@@ -23,8 +22,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
           id="documentary"
           type="radio"
           name="category"
-          value="documentary"
-          onClick={handleSubmitCategory}
+          onClick={() => handleSubmitFilter('documentary')}
         />
         <label className="filter__label" htmlFor="documentary">
           DOCUMENTARY
@@ -34,8 +32,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
           id="comedy"
           type="radio"
           name="category"
-          value="comedy"
-          onClick={handleSubmitCategory}
+          onClick={() => handleSubmitFilter('comedy')}
         />
         <label className="filter__label" htmlFor="comedy">
           COMEDY
@@ -45,8 +42,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
           id="horror"
           type="radio"
           name="category"
-          value="horror"
-          onClick={handleSubmitCategory}
+          onClick={() => handleSubmitFilter('horror')}
         />
         <label className="filter__label" htmlFor="horror">
           HORROR
@@ -56,8 +52,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
           id="crime"
           type="radio"
           name="category"
-          value="crime"
-          onClick={handleSubmitCategory}
+          onClick={() => handleSubmitFilter('crime')}
         />
         <label className="filter__label" htmlFor="crime">
           CRIME
@@ -67,10 +62,16 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
         <h2 className="sort__heading">SORT BY</h2>
         <select onChange={handleSubmitSort} className="sort__select">
           <option defaultValue value="newest" className="sort__option">
-            RELEASE DATE
+            RELEASE DATE DESC
           </option>
           <option value="oldest" className="sort__option">
-            oldest
+            RELEASE DATE ASC
+          </option>
+          <option value="voteDesc" className="sort__option">
+            VOTE AVARANGE DESC
+          </option>
+          <option value="voteAsc" className="sort__option">
+            VOTE AVARANGE ASC
           </option>
         </select>
       </div>
@@ -80,7 +81,7 @@ const FilterSort = ({ handleSubmitCategory, handleSubmitSort }) => (
 );
 
 FilterSort.propTypes = {
-  handleSubmitCategory: PropTypes.func.isRequired,
+  handleSubmitFilter: PropTypes.func.isRequired,
   handleSubmitSort: PropTypes.func.isRequired,
 };
 
