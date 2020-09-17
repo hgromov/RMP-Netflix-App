@@ -12,4 +12,12 @@ const initialState = {
   },
 };
 
+export const {
+  movies,
+  movieDetails,
+  addMoviePopup,
+  editMoviePopup,
+  deleteMoviePopup,
+} = initialState;
+
 export default initialState;

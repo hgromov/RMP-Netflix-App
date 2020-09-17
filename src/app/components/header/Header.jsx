@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
-import getRaitingColor from '../../common/services/getRaitingColor';
+import getRaitingColor from '../../../common/services/getRaitingColor';
 
 const Header = ({
   showAddMoviePopup,

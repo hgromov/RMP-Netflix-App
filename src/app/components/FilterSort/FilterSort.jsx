@@ -11,6 +11,7 @@ const FilterSort = ({ handleSubmitFilter, handleSubmitSort }) => (
           className="filter__input"
           id="all"
           type="radio"
+          defaultChecked
           name="category"
           onClick={() => handleSubmitFilter('')}
         />
