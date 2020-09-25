@@ -1,5 +1,6 @@
 import { SORT } from '../../types';
 import { mapToCamel } from '../../../common/services/renameMovieKeyNames';
+import apiPath from './baseUrl';
 
 const withSorting = (movies) => ({
   type: SORT,
@@ -34,7 +35,7 @@ const fetchWithSorting = (keyWord) => async (dispatch) => {
     default: return;
   }
   const { sortBy, sortOrder } = params;
-  const res = await fetch(`http://localhost:4000/movies/?limit=50&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+  const res = await fetch(`${apiPath}/movies/?limit=50&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
     'Content-Type': 'application/json',
   });
   const movies = await res.json();

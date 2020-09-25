@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -55,6 +56,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['./dist'],

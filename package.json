@@ -4,7 +4,7 @@
   "description": "react app using custom webpak configuration",
   "main": "index.js",
   "scripts": {
-    "preview": "cross-env NODE_ENV=development webpack-dev-server",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "package.dev": "cross-env NODE_ENV=development webpack",
     "package.prod": "cross-env NODE_ENV=production webpack",
     "lint": "eslint src",
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.2",
+    "dotenv-webpack": "^3.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
