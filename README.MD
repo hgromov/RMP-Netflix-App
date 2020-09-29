@@ -2,7 +2,7 @@
 
 react app using custom webpak configuration
 
-### How to install application
+### How to use application
 
 1. Install dependencies:
 
@@ -22,8 +22,29 @@ react app using custom webpak configuration
     npm run package.dev
     ```
 
-3. How to run preview tool:
+3. How to execute preview tool:
 
     ```bash
-    npm run preview
+    npm run dev
+    ```
+
+### How to use Movies API:
+
+1. Go to movies API directory:
+
+    ```bash
+    cd MoviesApi
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. How to execute Movies API:
+
+  production version:
+    ```bash
+    npm run start
     ```

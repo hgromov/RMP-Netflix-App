@@ -1,27 +1,29 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
+import {
+  urlPattern,
+  numberPattern,
+} from '../../../common/services/validationPatterns';
 import './PopupEdit.scss';
 
 const PopupEdit = ({
-  title: titleDefault,
-  posterPath: posterPathDefault,
-  genres: genresDefault,
-  date: dateDefault,
-  overview: overviewDefault,
-  runtime: runtimeDefault,
+  title,
+  posterPath,
+  genres,
+  date,
+  overview,
+  runtime,
   id,
   close,
   isVisible,
   editMovie,
 }) => {
-  const [title, setTitle] = useState(titleDefault);
-  const [posterPath, setPosterPath] = useState(posterPathDefault);
-  const [genres, setGenres] = useState(genresDefault);
-  const [date, setDate] = useState(dateDefault);
-  const [overview, setOverview] = useState(overviewDefault);
-  const [runtime, setRuntime] = useState(runtimeDefault);
+  const {
+    register, handleSubmit, errors, reset,
+  } = useForm();
 
   return (
     <div className={`PopupEdit-wrapper${isVisible ? '' : '--hiden'}`}>
@@ -29,99 +31,106 @@ const PopupEdit = ({
         <button
           type="button"
           className="PopupEdit__close-btn"
-          onClick={() => close()}
+          onClick={close}
         />
         <h2 className="PopupEdit__heading">EDIT MOVIE</h2>
         <span className="PopupEdit__label">MOVIE ID</span>
         <span className="PopupEdit__id">{id}</span>
         <div className="PopupEdit__form">
-          <label className="PopupEdit__label">
-            TITLE
-            <input
-              className="PopupEdit__input"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label className="PopupEdit__label">
-            RELEASE DATE
-            <input
-              className="PopupEdit__input"
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
-          </label>
-          <label className="PopupEdit__label">
-            MOVIE URL
-            <input
-              className="PopupEdit__input"
-              type="text"
-              value={posterPath}
-              onChange={(e) => setPosterPath(e.target.value)}
-            />
-          </label>
-          <label className="PopupEdit__label">
-            GENRE
-            <input
-              className="PopupEdit__input"
-              type="text"
-              value={genres}
-              onChange={(e) => setGenres(e.target.value)}
-            />
-          </label>
-          <label className="PopupEdit__label">
-            OVERVIEW
-            <input
-              className="PopupEdit__input"
-              type="text"
-              value={overview}
-              onChange={(e) => setOverview(e.target.value)}
-            />
-          </label>
-          <label className="PopupEdit__label">
-            RUNTIME
-            <input
-              className="PopupEdit__input"
-              type="number"
-              value={runtime}
-              onChange={(e) => setRuntime(e.target.value)}
-            />
-          </label>
-          <div className="PopupEdit__buttons">
-            <button
-              type="button"
-              className="PopupEdit__reset-btn"
-              onClick={() => {
-                setTitle(titleDefault);
-                setPosterPath(posterPathDefault);
-                setGenres(genresDefault);
-                setDate(dateDefault);
-                setOverview(overviewDefault);
-                setRuntime(runtimeDefault);
-              }}
-            >
-              RESET
-            </button>
-            <button
-              type="button"
-              className="PopupEdit__save-btn"
-              onClick={() => {
-                editMovie({
-                  title,
-                  posterPath,
-                  genres,
-                  date,
-                  overview,
-                  runtime,
-                  id,
-                });
-              }}
-            >
-              SAVE
-            </button>
-          </div>
+          <form onSubmit={handleSubmit((editedMovie) => editMovie({ ...editedMovie, id }))}>
+            <label className="PopupAdd__label">
+              TITLE
+              <input
+                className={`PopupAdd__input ${
+                  errors.title && 'PopupAdd__input--wrong'
+                }`}
+                type="text"
+                name="title"
+                defaultValue={title}
+                ref={register({ required: true })}
+              />
+            </label>
+            <label className="PopupAdd__label">
+              RELEASE DATE
+              <input
+                className={`PopupAdd__input ${
+                  errors.date && 'PopupAdd__input--wrong'
+                }`}
+                type="date"
+                name="date"
+                defaultValue={date}
+                ref={register({ required: true })}
+              />
+            </label>
+            <label className="PopupAdd__label">
+              MOVIE URL
+              <input
+                className={`PopupAdd__input ${
+                  errors.posterPath && 'PopupAdd__input--wrong'
+                }`}
+                type="text"
+                name="posterPath"
+                defaultValue={posterPath}
+                ref={register({
+                  required: true,
+                  pattern: urlPattern,
+                })}
+              />
+            </label>
+            <label className="PopupAdd__label">
+              GENRE
+              <input
+                className={`PopupAdd__input ${
+                  errors.genres && 'PopupAdd__input--wrong'
+                }`}
+                type="text"
+                name="genres"
+                defaultValue={genres}
+                ref={register({ required: true })}
+              />
+            </label>
+            <label className="PopupAdd__label">
+              OVERVIEW
+              <input
+                className={`PopupAdd__input ${
+                  errors.overview && 'PopupAdd__input--wrong'
+                }`}
+                type="text"
+                name="overview"
+                defaultValue={overview}
+                ref={register({ required: true })}
+              />
+            </label>
+            <label className="PopupAdd__label">
+              RUNTIME
+              <input
+                className={`PopupAdd__input ${
+                  errors.runtime && 'PopupAdd__input--wrong'
+                }`}
+                type="number"
+                name="runtime"
+                defaultValue={runtime}
+                ref={register({
+                  required: true,
+                  pattern: numberPattern,
+                  min: 1,
+                  max: 500,
+                })}
+              />
+            </label>
+            <div className="PopupEdit__buttons">
+              <button
+                type="button"
+                className="PopupEdit__reset-btn"
+                onClick={reset}
+              >
+                RESET
+              </button>
+              <button type="submit" className="PopupEdit__save-btn">
+                SAVE
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

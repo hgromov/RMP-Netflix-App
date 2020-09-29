@@ -14,7 +14,7 @@ const moviesCrudReducer = (state = movies, action) => {
       return [...state, ...action.payload];
     }
     case ADD_MOVIE: {
-      return [...state, ...action.payload];
+      return [...state, action.payload];
     }
 
     case EDIT_MOVIE: {

@@ -9,13 +9,13 @@ const PopupDelete = ({ close, deleteMovie, isVisible }) => (
       <button
         type="button"
         className="PopupDelete__close-btn"
-        onClick={() => close()}
+        onClick={close}
       />
       <h2 className="PopupDelete__heading">DELETE MOVIE</h2>
       <span className="PopupDelete__label">
         Are you sure you want to delete this movie?
       </span>
-      <button type="button" className="PopupDelete__confirm" onClick={() => deleteMovie()}>
+      <button type="button" className="PopupDelete__confirm" onClick={deleteMovie}>
         CONFIRM
       </button>
     </div>

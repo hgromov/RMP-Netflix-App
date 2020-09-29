@@ -1,5 +1,8 @@
 import { ADD_MOVIE } from '../../types';
-import { toCamel, toUnderscore } from '../../../common/services/renameMovieKeyNames';
+import {
+  toCamel,
+  toUnderscore,
+} from '../../../common/services/renameMovieKeyNames';
 import apiPath from './baseUrl';
 
 const addMovie = (movie) => ({
@@ -8,6 +11,8 @@ const addMovie = (movie) => ({
 });
 const postMovie = (movie) => async (dispatch) => {
   const newMovie = toUnderscore(movie);
+  newMovie.runtime = +newMovie.runtime;
+  newMovie.genres = newMovie.genres.split(', ');
   const res = await fetch(`${apiPath}/movies`, {
     method: 'POST',
     headers: {

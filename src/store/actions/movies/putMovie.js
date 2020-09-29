@@ -8,6 +8,8 @@ const editMovie = (movie) => ({
 });
 const putMovie = (movie) => async (dispatch) => {
   const newMovie = toUnderscore(movie);
+  newMovie.runtime = +newMovie.runtime;
+  newMovie.genres = newMovie.genres.split(', ');
   const res = await fetch(`${apiPath}/movies`, {
     method: 'PUT',
     headers: {
