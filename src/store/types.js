@@ -16,3 +16,4 @@ export const HIDE_DELETE_MOVIE_POPUP = 'HIDE_DELETE_MOVIE_POPUP';
 
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE';
 export const SORT = 'SORT';
+export const SEARCH = 'SEARCH';

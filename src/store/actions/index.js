@@ -4,6 +4,7 @@ import putMovie from './movies/putMovie';
 import deleteMovie from './movies/deleteMovie';
 import fetchByGenre from './movies/fetchByGenre';
 import fetchWithSorting from './movies/fetchWithSorting';
+import fetchByQuery from './movies/fetchByQuery';
 import { getMovieDetails, hideMovieDetails } from './movies/movieDetails';
 import {
   toggleAddPopup,
@@ -24,6 +25,7 @@ export {
   // filtering & sorting
   fetchByGenre,
   fetchWithSorting,
+  fetchByQuery,
   // popups
   toggleAddPopup,
   showEditPopup,

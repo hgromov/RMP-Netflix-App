@@ -5,6 +5,7 @@ import {
   DELETE_MOVIE,
   FILTER_BY_GENRE,
   SORT,
+  SEARCH,
 } from '../../types';
 import { movies } from '../../initialState';
 
@@ -32,6 +33,9 @@ const moviesCrudReducer = (state = movies, action) => {
       return action.payload;
     }
     case SORT: {
+      return action.payload;
+    }
+    case SEARCH: {
       return action.payload;
     }
     default: return state;

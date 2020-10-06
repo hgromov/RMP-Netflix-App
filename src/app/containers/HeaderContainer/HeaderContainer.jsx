@@ -1,26 +1,18 @@
 import React, { useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { toggleAddPopup } from '../../../store/actions';
 import Header from '../../components/Header/Header';
-import { toggleAddPopup, hideMovieDetails } from '../../../store/actions';
 
-const HeaderContainer = () => {
+const HeaderContainer = ({ children }) => {
   const dispatch = useDispatch();
   const showAddMoviePopup = useCallback(() => dispatch(toggleAddPopup()));
-  const movieDetails = useSelector((state) => state.movieDetails);
-  const dispatchHiheMovieDetails = useCallback(() => {
-    dispatch(hideMovieDetails());
-  });
 
-  return (
-    <Header
-      showAddMoviePopup={showAddMoviePopup}
-      handleSubmit={() => {}}
-      onChange={() => {}}
-      search={() => {}}
-      movieDetails={movieDetails}
-      hideMovieDetails={dispatchHiheMovieDetails}
-    />
-  );
+  return <Header showAddMoviePopup={showAddMoviePopup}>{children}</Header>;
+};
+
+HeaderContainer.propTypes = {
+  children: PropTypes.element.isRequired,
 };
 
 export default HeaderContainer;

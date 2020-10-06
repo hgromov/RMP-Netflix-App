@@ -5,7 +5,7 @@ import './MoviesList.scss';
 
 const MoviesList = ({
   movies, showEditPopup, showDeletePopup, showMovieDetails,
-}) => (
+}) => (movies.length > 0 ? (
   <>
     <div className="movies-counter">
       <span className="movies-counter__amount">{movies.length}</span>
@@ -33,7 +33,11 @@ const MoviesList = ({
       ))}
     </div>
   </>
-);
+) : (
+  <div className="not-found-wrapper">
+    <span className="not-found-text">No Movie Found</span>
+  </div>
+));
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,

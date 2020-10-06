@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #555555;
+  background: #232323;
 }
 
 .logo {
@@ -22,4 +22,22 @@ body {
   filter: blur(2px) brightness(20%);
   position: fixed;
   width: 100%;
+}
+
+.error-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__logo {
+    margin-top: 2vh;
+    margin-left: 4vw;
+  }
+
+  &__banner {
+    width: 90vw;
+    align-self: center;
+    object-fit: contain;
+  }
 }

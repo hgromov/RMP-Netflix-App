@@ -1,5 +1,8 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  useParams,
+} from 'react-router-dom';
 import Content from '../../components/Content/Content';
 import {
   getMoviesList,
@@ -8,14 +11,20 @@ import {
   getMovieDetails,
   fetchByGenre,
   fetchWithSorting,
+  fetchByQuery,
 } from '../../../store/actions';
 
 const ContentContainer = () => {
+  const { query } = useParams();
   const movies = useSelector((state) => state.movies);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getMoviesList());
   }, []);
+  useEffect(() => {
+    dispatch(fetchByQuery(query));
+  }, [query]);
   const dispatchShowEditPopup = useCallback((id) => {
     dispatch(showEditPopup(id));
   });

@@ -1,5 +1,8 @@
 .Footer {
+  position: relative;
+  bottom: 0px;
   height: 70px;
+  background-color: #424242;
   display: flex;
   justify-content: center;
   &__logo {

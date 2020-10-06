@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './MovieCard.scss';
 
 const MovieCard = ({
@@ -24,14 +25,13 @@ const MovieCard = ({
       onMouseLeave={() => setIsShownOptions(false)}
     >
       <div className="MovieCard__imageWrapper">
-        <img
-          className="MovieCard__picture"
-          src={posterPath}
-          alt="not found"
-          onClick={() => {
-            showMovieDetails(id);
-          }}
-        />
+        <Link to={`/film/${id}`}>
+          <img
+            className="MovieCard__picture"
+            src={posterPath}
+            alt="not found"
+          />
+        </Link>
         {isShownOptions && (
           <button
             type="button"
@@ -91,6 +91,5 @@ MovieCard.propTypes = {
   showDeletePopup: PropTypes.func.isRequired,
   showMovieDetails: PropTypes.func.isRequired,
 };
-
 
 export default MovieCard;
