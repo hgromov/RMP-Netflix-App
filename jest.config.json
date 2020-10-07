@@ -1,6 +1,9 @@
 {
   "moduleFileExtensions": ["js", "jsx"],
   "moduleDirectories": ["node_modules", "src"],
+  "testPathIgnorePatterns" : [
+    "<rootDir>/MoviesAPI" 
+  ],
 
   "moduleNameMapper": {
     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
