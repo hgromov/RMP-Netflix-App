@@ -14,7 +14,6 @@ const MovieCard = ({
   id,
   showEditPopup,
   showDeletePopup,
-  showMovieDetails,
 }) => {
   const [isShownOptions, setIsShownOptions] = useState(false);
   const [isShownSelect, setIsShownSelect] = useState(false);
@@ -89,7 +88,6 @@ MovieCard.propTypes = {
   date: PropTypes.string.isRequired,
   showEditPopup: PropTypes.func.isRequired,
   showDeletePopup: PropTypes.func.isRequired,
-  showMovieDetails: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-import moviesCrudReducer from './movies/moviesCrudReducer';
-import movieDetailsReducer from './movies/movieDetailsReducer';
-import popupAddReducer from './popups/popupAddReducer';
-import popupEditReducer from './popups/popupEditReducer';
-import popupDeleteReducer from './popups/popupDeleteReducer';
+import { moviesCrudReducer, movieDetailsReducer } from './movies';
+import { popupAddReducer, popupEditReducer, popupDeleteReducer } from './popups';
 
 export default combineReducers({
   movieDetails: movieDetailsReducer,

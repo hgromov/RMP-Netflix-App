@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import HeaderContainer from '../containers/HeaderContainer/HeaderContainer';
@@ -9,17 +9,10 @@ import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 import AddMoviePopupContainer from '../containers/popups/AddMoviePopupContainer/AddMoviePopupContainer';
 import EditMoviePopupContainer from '../containers/popups/EditMoviePopupContainer/EditMoviePopupContainer';
 import DeleteMoviePopupContainer from '../containers/popups/DeleteMoviePopupContainer/DeleteMoviePopupContainer';
+import { isBlurSelector } from '../../store/selectors';
 
 const Layout = ({ children }) => {
-  const isVisibleAddPopup = useSelector((state) => state.addMoviePopup.isVisible);
-  const isVisibleEditPopup = useSelector((state) => state.editMoviePopup.isVisible);
-  const isVisibleDeletePopup = useSelector((state) => state.deleteMoviePopup.isVisible);
-
-  const isBlur = useMemo(() => (
-    (isVisibleAddPopup || isVisibleEditPopup || isVisibleDeletePopup)
-      ? 'Layout--blur'
-      : ''
-  ), [isVisibleAddPopup, isVisibleEditPopup, isVisibleDeletePopup]);
+  const isBlur = useSelector(isBlurSelector);
 
   return (
     <>

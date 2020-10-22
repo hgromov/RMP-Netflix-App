@@ -4,6 +4,7 @@ import {
   useParams,
 } from 'react-router-dom';
 import Content from '../../components/Content/Content';
+import { moviesSelector } from '../../../store/selectors';
 import {
   getMoviesList,
   showEditPopup,
@@ -16,7 +17,7 @@ import {
 
 const ContentContainer = () => {
   const { query } = useParams();
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector(moviesSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {

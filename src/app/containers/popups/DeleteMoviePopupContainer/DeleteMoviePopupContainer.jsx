@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PopupDelete from '../../../components/popups/PopupDelete/PopupDelete';
+import { idOfDeletedMovieSelector, isVisibleDeletePopupSelector } from '../../../../store/selectors';
 import { hideDeletePopup, deleteMovie } from '../../../../store/actions';
 
 const deletePopupContainer = () => {
-  const id = useSelector((state) => state.deleteMoviePopup.id);
-  const isVisible = useSelector((state) => state.deleteMoviePopup.isVisible);
+  const id = useSelector(idOfDeletedMovieSelector);
+  const isVisible = useSelector(isVisibleDeletePopupSelector);
   const dispatch = useDispatch();
   const close = () => dispatch(hideDeletePopup());
   const dispatchDeleteMovie = () => {

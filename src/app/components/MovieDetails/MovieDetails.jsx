@@ -4,12 +4,13 @@ import {
 } from 'react-router-dom';
 import './MovieDetails.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { movieDetailsSelector } from '../../../store/selectors';
 import { getMovieDetails } from '../../../store/actions';
 import getRaitingColor from '../../../common/services/getRaitingColor';
 
 const MovieDetails = () => {
   const { id } = useParams();
-  const movieDetails = useSelector((state) => state.movieDetails);
+  const movieDetails = useSelector(movieDetailsSelector);
 
   const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ const MovieDetails = () => {
           <h1 className="movieDetails__title">{movieDetails.title}</h1>
           <div
             className={`movieDetails__raiting movieDetails__raiting--${getRaitingColor(
-              movieDetails.voteAverage
+              movieDetails.voteAverage,
             )}`}
           >
             {movieDetails.voteAverage}

@@ -2,17 +2,19 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PopupEdit from '../../../components/popups/PopupEdit/PopupEdit';
 import { hideEditPopup, putMovie } from '../../../../store/actions';
+import { idOfEditedMovieSelector, isVisibleEditPopupSelector, editedMovieSelector } from '../../../../store/selectors';
 
 const editPopupContainer = () => {
-  const id = useSelector((state) => state.editMoviePopup.id);
-  const isVisible = useSelector((state) => state.editMoviePopup.isVisible);
-  const selectedMovie = useSelector((state) => state.movies.find((movie) => movie.id === id));
+  const id = useSelector(idOfEditedMovieSelector);
+  const isVisible = useSelector(isVisibleEditPopupSelector);
+  const selectedMovie = useSelector(editedMovieSelector);
   const dispatch = useDispatch();
   const close = () => dispatch(hideEditPopup());
   const dispatchEditMovie = (movie) => {
     dispatch(putMovie(movie));
     close();
   };
+
   if (!id) return null;
 
   const {
